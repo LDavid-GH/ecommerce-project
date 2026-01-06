@@ -11,15 +11,15 @@ export function CheckOutPage({ cart }) {
     const [paymentSummary, setPaymentSummary] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-            .then((response) => {
-                setDelieveryOptions(response.data)
-            })
+        const fetchCheckOutData = async () =>{
+            let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+            setDelieveryOptions(response.data)
 
-        axios.get('/api/payment-summary')
-            .then((response) => {
-                setPaymentSummary(response.data);
-            })
+            response = axios.get('/api/payment-summary')
+            setPaymentSummary(response.data);
+        }
+
+        fetchCheckOutData();
 
     }, []);
 
