@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Routes, Route } from 'react-router';
 import { useState, useEffect } from 'react';
-import { HomePage } from './pages/HomePage';
-import { CheckOutPage } from './pages/CheckOutPage';
-import { OrdersPage } from './pages/OrdersPage';
+import { HomePage } from './pages/home/HomePage';
+import { CheckOutPage } from './pages/checkout/CheckOutPage';
+import { OrdersPage } from './pages/orders/OrdersPage';
 
 import './App.css'
 
