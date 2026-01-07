@@ -13,7 +13,7 @@ export function OrderSummary({ cart, deliveryOptions }) {
                     });
 
                 return (
-                    <div key={cartItem.productID} className="cart-item-container">
+                    <div key={cartItem.productId} className="cart-item-container">
                         <div className="delivery-date">
                             Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
                         </div>

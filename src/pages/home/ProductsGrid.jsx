@@ -1,3 +1,4 @@
+import axios from 'axios'; 
 import { formatMoney } from "../../utils/money";
 
 export function ProductsGrid({ products }) {
@@ -10,11 +11,9 @@ export function ProductsGrid({ products }) {
                             <img className="product-image"
                                 src={product.image} />
                         </div>
-
                         <div className="product-name limit-text-to-2-lines">
                             {product.name}
                         </div>
-
                         <div className="product-rating-container">
                             <img className="product-rating-stars"
                                 src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
@@ -22,11 +21,9 @@ export function ProductsGrid({ products }) {
                                 {product.rating.count}
                             </div>
                         </div>
-
                         <div className="product-price">
                             {formatMoney(product.priceCents)}
                         </div>
-
                         <div className="product-quantity-container">
                             <select>
                                 <option value="1">1</option>
@@ -41,15 +38,18 @@ export function ProductsGrid({ products }) {
                                 <option value="10">10</option>
                             </select>
                         </div>
-
                         <div className="product-spacer"></div>
-
                         <div className="added-to-cart">
                             <img src="images/icons/checkmark.png" />
                             Added
                         </div>
-
-                        <button className="add-to-cart-button button-primary">
+                        <button className="add-to-cart-button button-primary"
+                            onClick={()=>{
+                                axios.post('/api/cart-items', {
+                                    productId: product.id,
+                                    quantity: 1
+                                });
+                            }}>
                             Add to Cart
                         </button>
                     </div>
